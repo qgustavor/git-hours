@@ -20,7 +20,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since today', (t, done) => {
-    execFile('node', [scriptPath, '--since', 'today'], (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'today'], (err, stdout, stderr) => {
       if (err) console.error(stderr.toString())
       assert.ifError(err)
       const work = JSON.parse(stdout)
@@ -30,7 +30,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since yesterday', (t, done) => {
-    execFile('node', [scriptPath, '--since', 'yesterday'], (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'yesterday'], (err, stdout, stderr) => {
       if (err) console.error(stderr.toString())
       assert.ifError(err)
       const work = JSON.parse(stdout)
@@ -40,7 +40,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since last week', (t, done) => {
-    execFile('node', [scriptPath, '--since', 'lastweek'], (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'lastweek'], (err, stdout, stderr) => {
       if (err) console.error(stderr.toString())
       assert.ifError(err)
       const work = JSON.parse(stdout)
@@ -50,7 +50,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since a specific date', (t, done) => {
-    execFile('node', [scriptPath, '--since', '2015-01-01'], (err, stdout) => {
+    execFile('node', [scriptPath, '--since', '2015-01-01'], (err, stdout, stderr) => {
       if (err) console.error(stderr.toString())
       assert.ifError(err)
       const work = JSON.parse(stdout)
@@ -60,7 +60,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse as without param', (t, done) => {
-    execFile('node', [scriptPath, '--since', 'always'], (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'always'], (err, stdout, stderr) => {
       if (err) console.error(stderr.toString())
       assert.ifError(err)
       const work = JSON.parse(stdout)
