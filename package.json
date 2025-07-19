@@ -1,6 +1,6 @@
 {
   "name": "@qgustavor/git-hours",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Estimate time spent on a git repository",
   "main": "./src/index.js",
   "type": "module",
