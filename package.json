@@ -1,8 +1,9 @@
 {
-  "name": "git-hours",
-  "version": "1.6.0",
+  "name": "@qgustavor/git-hours",
+  "version": "2.0.0-alpha.1",
   "description": "Estimate time spent on a git repository",
   "main": "./src/index.js",
+  "type": "module",
   "bin": {
     "git-hours": "./src/index.js"
   },
@@ -11,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kimmobrunfeldt/git-hours.git"
+    "url": "https://github.com/qgustavor/git-hours.git"
   },
   "keywords": [
     "git",
@@ -21,32 +22,26 @@
     "clock",
     "hours"
   ],
-  "author": "Kimmo Brunfeldt",
+  "contributors": [
+    "Kimmo Brunfeldt",
+    "Denis Torresan",
+    "qgustavor (https://qgustavor.tk)"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kimmobrunfeldt/git-hours/issues"
+    "url": "https://github.com/qgustavor/git-hours/issues"
   },
-  "homepage": "https://github.com/kimmobrunfeldt/git-hours",
+  "homepage": "https://github.com/qgustavor/git-hours",
   "dependencies": {
-    "bluebird": "^3.7.2",
-    "commander": "^8.0.0",
-    "lodash": "^4.17.21",
-    "moment": "^2.10.6"
-  },
-  "devDependencies": {
-    "eslint": "^7.30.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4",
-    "mocha": "^9.0.2",
-    "nodemon": "^2.0.9",
-    "np": "^7.5.0"
+    "commander": "^14.0.0",
+    "date-fns": "^4.1.0"
   },
   "scripts": {
-    "dev": "npx nodemon --exec 'npm run test && npm run lint'",
-    "test": "npx mocha -R spec",
-    "lint": "npx eslint --ext js ."
+    "test": "npm run lint && node --test",
+    "lint": "npx eslint --fix"
   },
-  "engines": {
-    "node": ">=14.x"
+  "devDependencies": {
+    "eslint": "^9.31.0",
+    "neostandard": "^0.12.2"
   }
 }
