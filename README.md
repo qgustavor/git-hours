@@ -1,4 +1,4 @@
-# git-hours
+# @qgustavor/git-hours
 
 Estimate time spent on a git repository. Modern fork using modern Node.js (and which may work in other JavaScript engines too).
 
