@@ -9,7 +9,7 @@ const scriptPath = path.resolve(import.meta.dirname, '../src/index.js')
 describe('git-hours', () => {
   it('should output json', (t, done) => {
     execFile('node', [scriptPath], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
+      if (err) throw Error('command failed, more info: ' + stderr + stdout)
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.notEqual(work.total.hours.length, 0)
@@ -21,7 +21,6 @@ describe('git-hours', () => {
 
   it('Should analyse since today', (t, done) => {
     execFile('node', [scriptPath, '--since', 'today'], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -31,7 +30,6 @@ describe('git-hours', () => {
 
   it('Should analyse since yesterday', (t, done) => {
     execFile('node', [scriptPath, '--since', 'yesterday'], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -41,7 +39,6 @@ describe('git-hours', () => {
 
   it('Should analyse since last week', (t, done) => {
     execFile('node', [scriptPath, '--since', 'lastweek'], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -51,7 +48,6 @@ describe('git-hours', () => {
 
   it('Should analyse since a specific date', (t, done) => {
     execFile('node', [scriptPath, '--since', '2015-01-01'], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.notEqual(work.total.hours, 0)
@@ -61,7 +57,6 @@ describe('git-hours', () => {
 
   it('Should analyse as without param', (t, done) => {
     execFile('node', [scriptPath, '--since', 'always'], (err, stdout, stderr) => {
-      if (err) err.stderr = stderr
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.equal(work.total.hours, totalHoursCount)
