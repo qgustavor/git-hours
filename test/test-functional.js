@@ -1,12 +1,14 @@
 import { describe, it } from 'node:test'
-import { exec } from 'child_process'
-import assert from 'assert'
+import { execFile } from 'node:child_process'
+import assert from 'node:assert'
+import path from 'node:path'
 
 let totalHoursCount
+const scriptPath = path.resolve(import.meta.dirname, '../src/index.js')
 
 describe('git-hours', () => {
   it('should output json', (t, done) => {
-    exec('node ./src/index.js', (err, stdout, stderr) => {
+    execFile('node', [scriptPath], (err, stdout, stderr) => {
       if (err !== null) {
         throw new Error(stderr)
       }
@@ -19,7 +21,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since today', (t, done) => {
-    exec('node ./src/index.js --since today', (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'today'], (err, stdout) => {
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -28,7 +30,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since yesterday', (t, done) => {
-    exec('node ./src/index.js --since yesterday', (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'yesterday'], (err, stdout) => {
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -37,7 +39,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since last week', (t, done) => {
-    exec('node ./src/index.js --since lastweek', (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'lastweek'], (err, stdout) => {
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.strictEqual(typeof work.total.hours, 'number')
@@ -46,7 +48,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse since a specific date', (t, done) => {
-    exec('node ./src/index.js --since 2015-01-01', (err, stdout) => {
+    execFile('node', [scriptPath, '--since', '2015-01-01'], (err, stdout) => {
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.notEqual(work.total.hours, 0)
@@ -55,7 +57,7 @@ describe('git-hours', () => {
   })
 
   it('Should analyse as without param', (t, done) => {
-    exec('node ./src/index.js --since always', (err, stdout) => {
+    execFile('node', [scriptPath, '--since', 'always'], (err, stdout) => {
       assert.ifError(err)
       const work = JSON.parse(stdout)
       assert.equal(work.total.hours, totalHoursCount)
