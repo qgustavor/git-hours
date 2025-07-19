@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { startOfDay, startOfWeek, subDays, subWeeks, parse, format } from 'date-fns'
 import pkg from '../package.json' with { type: 'json' }
 import childProcess from 'node:child_process'

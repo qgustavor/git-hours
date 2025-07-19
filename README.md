@@ -1,6 +1,6 @@
 # @qgustavor/git-hours
 
-Estimate time spent on a git repository. Modern fork using modern Node.js (and which may work in other JavaScript engines too).
+Estimate time spent on a git repository. A modern fork using modern Node.js features.
 
 **For example time spent on [Twitter's Bootstrap](https://github.com/twbs/bootstrap)**
 
@@ -24,6 +24,10 @@ From a person working 8 hours per day, it would take more than 3 years to build 
 ## Install
 
     $ npm install -g @qgustavor/git-hours
+
+It might work using other JavaScript runtimes such as Deno and Bun, it's untested. There are some documented caveats:
+`#!/usr/bin/env node` is set, so Bun requires calling it using `bunx --bun git-hours` otherwise it will run on Node.js.
+As for Deno, [it might work or not](https://github.com/denoland/deno/issues/21110).
 
 ## How it works
 
