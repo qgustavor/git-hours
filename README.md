@@ -1,10 +1,6 @@
-[![Status badge](https://github.com/kimmobrunfeldt/git-hours/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/kimmobrunfeldt/git-hours/actions?query=branch%3Amaster)
-
 # git-hours
 
-Estimate time spent on a git repository.
-
-**NOTE:** This revamped version uses native OS git so `nodegit` is no longer required!
+Estimate time spent on a git repository. Modern fork using modern Node.js (and which may work in other JavaScript engines too).
 
 **For example time spent on [Twitter's Bootstrap](https://github.com/twbs/bootstrap)**
 
@@ -27,9 +23,7 @@ From a person working 8 hours per day, it would take more than 3 years to build 
 
 ## Install
 
-    $ npm install -g git-hours
-
-
+    $ npm install -g @qgustavor/git-hours
 
 ## How it works
 
@@ -123,5 +117,5 @@ Help
 
        $ git-hours --branch master
 
-    For more details, visit https://github.com/kimmobrunfeldt/git-hours
+    For more details, visit https://github.com/qgustavor/git-hours
 

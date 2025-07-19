@@ -242,7 +242,7 @@ function parseArgs () {
       '       $ git-hours --since 2015-01-31',
       '   - Estimate hours work in repository on the "master" branch',
       '       $ git-hours --branch master',
-      '  For more details, visit https://github.com/kimmobrunfeldt/git-hours',
+      '  For more details, visit https://github.com/qgustavor/git-hours',
     ].join('\n\n'))
   })
 
